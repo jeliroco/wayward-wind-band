@@ -1,0 +1,12 @@
+{
+  "name": "wayward-wind-band",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "astro",
+    "wordpress"
+  ],
+  "scripts": {
+    "dev": "yarn workspace astro dev"
+  }
+}

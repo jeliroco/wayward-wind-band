@@ -1,0 +1,28 @@
+---
+const primaryMenuResponse = await fetch(
+  `http://localhost/wayward-wind-band/wp-json/menus/v1/locations/primary`,
+  {
+    method: "GET",
+  }
+);
+const mobileMenuResponse = await fetch(
+  `http://localhost/wayward-wind-band/wp-json/menus/v1/locations/primary`,
+  {
+    method: "GET",
+  }
+);
+const primaryMenu = await primaryMenuResponse.json();
+const mobileMenu = await mobileMenuResponse.json();
+---
+
+<nav>
+  <ul>
+    {
+      primaryMenu.items.map((item) => (
+        <li>
+          <a href={`/${item.slug}`}>{item.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

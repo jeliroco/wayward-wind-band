@@ -1,0 +1,4 @@
+html, body {
+  @apply bg-red-950;
+  @apply text-white;
+}

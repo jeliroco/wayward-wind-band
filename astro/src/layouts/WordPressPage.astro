@@ -1,0 +1,19 @@
+---
+import GlobalLayout from "../layouts/GlobalLayout.astro";
+
+const { slug } = Astro.props;
+const pageResponse = await fetch(
+  `http://localhost/wayward-wind-band/wp-json/wp/v2/pages?slug=${slug}`,
+  {
+    method: "GET",
+  }
+);
+const [page] = await pageResponse.json();
+---
+
+<GlobalLayout>
+  <article>
+    <h2 set:html={page.title.rendered} />
+    <div set:html={page.content.rendered} />
+  </article>
+</GlobalLayout>

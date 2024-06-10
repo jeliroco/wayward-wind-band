@@ -1,0 +1,22 @@
+---
+import GlobalLayout from "../layouts/GlobalLayout.astro";
+import WordPressPage from "../layouts/WordPressPage.astro";
+
+export async function getStaticPaths() {
+  const pagesResponse = await fetch(
+    `http://localhost/wayward-wind-band/wp-json/wp/v2/pages`,
+    {
+      method: "GET",
+    }
+  );
+  const pages = await pagesResponse.json();
+  const paths = pages.map((page) => ({
+    params: { slug: page.slug },
+  }));
+
+  return paths;
+}
+
+const { slug } = Astro.params;
+---
+<WordPressPage slug={slug} />

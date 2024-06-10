@@ -1,0 +1,24 @@
+---
+import "../styles/globals.css";
+import NavMenu from "../components/NavMenu.astro";
+
+const { title } = Astro.props;
+const baseTitle = "Way-To-Go Productions";
+const pageTitle = title ? `${title} | ${baseTitle}` : baseTitle;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <NavMenu />
+    <h1>{title}</h1>
+    <article>
+      <slot />
+      <!-- your content is injected here -->
+    </article>
+  </body>
+</html>
